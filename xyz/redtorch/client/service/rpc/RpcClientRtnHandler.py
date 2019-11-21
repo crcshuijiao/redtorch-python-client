@@ -34,3 +34,37 @@ class RpcClientRtnHandler:
     @staticmethod
     def onRpcNoticeRtn(rpcNoticeRtn):
         logger.info("收到通知信息%s", rpcNoticeRtn.notice)
+
+    @staticmethod
+    def onRpcOrderListRtn(rpcOrderListRtn):
+        for order in rpcOrderListRtn.order:
+            ClientTradeCacheService.storeOrder(order)
+            StrategyEngine.onOrder(order)
+
+    @staticmethod
+    def onRpcTradeListRtn(rpcTradeListRtn):
+        for trade in rpcTradeListRtn.trade:
+            ClientTradeCacheService.storeTrade(trade)
+            StrategyEngine.onTrade(trade)
+
+    @staticmethod
+    def onRpcContractListRtn(rpcContractListRtn):
+        for contract in rpcContractListRtn.contract:
+            ClientTradeCacheService.storeContract(contract)
+
+    @staticmethod
+    def onRpcPositionListRtn(rpcPositionListRtn):
+        for position in rpcPositionListRtn.position:
+            ClientTradeCacheService.storePosition(position)
+
+    @staticmethod
+    def onRpcAccountListRtn(rpcAccountListRtn):
+        for account in rpcAccountListRtn.account:
+            ClientTradeCacheService.storeAccount(account)
+
+    @staticmethod
+    def onRpcTickListRtn(rpcTickListRtn):
+        for tick in rpcTickListRtn.tick:
+            ClientTradeCacheService.storeTick(tick)
+
+

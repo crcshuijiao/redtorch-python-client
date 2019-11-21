@@ -68,7 +68,7 @@ message OrderField {
 	string adapterOrderId = 3;  // 适配器层定单ID
 	string accountId = 4;  // 账户ID
 	DirectionEnum direction = 5;  // 方向
-	OffsetEnum offset = 6;  // 报平仓
+	OffsetEnum offset = 6;  // 开平
 	OrderStatusEnum orderStatus = 7;  // 状态
 	double price = 8;  // 价格
 	fixed32 totalVolume = 9;  // 数量
